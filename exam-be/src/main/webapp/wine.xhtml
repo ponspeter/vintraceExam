@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<f:view>
+<h:head>
+    <title>Wine Test</title>
+</h:head>
+
+<h:body>
+    <h:form>
+
+        <p:panel id="panel1" header="Search Wine" style="margin-bottom:10px;">
+            <p:messages id="messages1" />
+            <h:panelGrid columns="2" cellpadding="5">
+
+                <h:outputLabel for="lotCodeSearch"  value="Lot code :" />
+                <p:inputText id="lotCodeSearch"  value="#{wineBean.lotCodeSearch}" />
+
+                <h:outputLabel for="descriptionSearch"  value="Description :" />
+                <p:inputTextarea rows="2" cols="50" id="descriptionSearch"  value="#{wineBean.descriptionSearch}" />
+
+                <h:outputLabel for="volumeSearch"  value="Volume :" />
+                <p:inputText id="volumeSearch"  value="#{wineBean.volumeSearch}" />
+
+                <h:outputLabel for="tankCodeSearch"  value="Tank :" />
+                <p:inputText id="tankCodeSearch"  value="#{wineBean.tankCodeSearch}" />
+
+                <h:outputLabel for="productStateSearch"  value="Product State :" />
+                <p:inputTextarea rows="2" cols="20" id="productStateSearch"  value="#{wineBean.productStateSearch}" />
+
+                <h:outputLabel for="ownerNameSearch"  value="Owner :" />
+                <p:inputTextarea rows="2" cols="50" id="ownerNameSearch"  value="#{wineBean.ownerNameSearch}" />
+            </h:panelGrid>
+        </p:panel>
+
+        <p:commandButton value="Submit" update="@form" action="#{wineBean.searchWine}" />
+
+        <p:panel id="panel2" header="Wine Information" style="margin-bottom:10px;">
+            <p:messages id="messages2" />
+            <h:panelGrid columns="2" cellpadding="5">
+
+                <h:outputLabel for="lotCode"  value="Lot code :" />
+                <h:outputLabel for="lotCode"  value="#{wineBean.wine.lotCode}" />
+
+                <h:outputLabel for="description"  value="Description :" />
+                <h:outputLabel for="description"  value="#{wineBean.wine.description}" />
+
+                <h:outputLabel for="volume"  value="Volume :" />
+                <h:outputLabel for="volume"  value="#{wineBean.wine.volume}" />
+
+                <h:outputLabel for="tankCode"  value="Tank :" />
+                <h:outputLabel for="tankCode"  value="#{wineBean.wine.tankCode}" />
+
+                <h:outputLabel for="productState"  value="Product State :" />
+                <h:outputLabel for="productState"  value="#{wineBean.wine.productState}" />
+
+                <h:outputLabel for="ownerName"  value="Owner :" />
+                <h:outputLabel for="ownerName"  value="#{wineBean.wine.ownerName}" />
+
+            </h:panelGrid>
+            <p:dataTable var="comp" value="#{wineBean.wine.components}" style="margin-bottom:10px;">
+                <p:column headerText="percentage">
+                    <h:outputText value="#{comp.percentage}" />
+                </p:column>
+                <p:column headerText="year">
+                    <h:outputText value="#{comp.year}" />
+                </p:column>
+                <p:column headerText="variety">
+                    <h:outputText value="#{comp.variety}" />
+                </p:column>
+                <p:column headerText="region">
+                    <h:outputText value="#{comp.region}" />
+                </p:column>
+            </p:dataTable>
+        </p:panel>
+
+    </h:form>
+</h:body>
+</f:view>
+</html>
